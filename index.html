@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teste Validação</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Tema opcional -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Necessária importação dos arquivos abaixo -->
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="jquery.mask.min.js"/></script>
+	<script type="text/javascript" src="recebidados.js"/></script>
+	
+    <style type="text/css">
+    	.container{
+    		margin: 2% 40%;
+    	}
+    </style>
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+  		<div class="container-fluid">
+			<div class="row">
+				<!--  action="recebidados.php" method="post" -->
+				<div class="col-md-2 col-md-offset-5">
+					<label for="local"> Escolha seu Posto de Atendimento </label><br>
+					<select multiple class="form-control" name="local" id="local">
+						<!--<option value=0> Selecione o Posto </option>-->
+						<option value=1> Aldeota </option>
+						<option value=2> Pe. Val Divino </option>
+						<option value=3> W. Soares </option>
+						<option value=4> Bezerra de Menezes </option>
+						<option value=5> 13 de Maio </option>
+					</select>
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-2 col-md-offset-5">
+					<label for="nome">Nome:</label> <br>
+					<input type="text" name="nome" id="nome" placeholder="Informe seu Nome" />
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-8 col-md-offset-5">
+					<label for="data">Data:</label> <br>
+					<input type="date" name="data" id="data" placeholder="Informe a Data Desejada" />
+				</div>
+				<br/><br/><br/>
+
+				<div class="col-md-8 col-md-offset-5">
+					<label for="exame">Exame:</label> <br>
+					<input type="text" name="exame" id="exame" placeholder="Informe o Exame Desejado" />
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-8 col-md-offset-5">
+					<label for="email">Email:</label> <br>
+					<input type="email" name="email" id="email" placeholder="Informe seu Email" />
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-8 col-md-offset-5">
+					<label for="txttelefone">Telefone:</label> <br>
+					<input type="tel" name="txttelefone" id="txttelefone" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}"  placeholder="Número do Celular"/>
+					<script type="text/javascript">$("#txttelefone").mask("(00) 00000-0000");</script>
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-8 col-md-offset-5">
+					<label for="cpf">CPF:</label> <br>
+					<input type="txt" name="cpf" id="cpf" placeholder="Informe seu CPF" />
+					<script type="text/javascript">$("#cpf").mask("000.000.000-00");</script>
+				</div>
+				<br/><br/><br/>
+				
+				<div class="col-md-2 col-md-offset-5">
+					<label for="msg">Mensagem:</label><br/>
+					<textarea style="width:300px; height:150px" class="form-control" id="msg" placeholder="Informe Aqui Qualquer Informação que Achar Válida"></textarea>
+				</div>
+				<br/><br/><br/>
+
+				<div class="col-md-2 col-md-offset-5">
+					<button onclick="valida()"> Enviar </button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-4">
+					<h5 class="text-center"> Dados Pessoais </h5>
+					<div class="text-center" id="retornoDadosPessoais"></div>
+				</div>
+				<div class="col-md-4">
+					<h5 class="text-center"> Dados Pessoais </h5>
+					<div class="text-center" id="retornoDadosExames"></div>
+				</div>
+				<div class="col-md-4">
+					<h5 class="text-center"> Dados Pessoais </h5>
+					<div class="text-center" id="retornoDadosMsg"></div>
+				</div>
+			</div>
+			<br/><br/>
+			<hr>
+			<div  class="col-md-2 col-md-offset-5" id="retorno"></div>
+
+			<br/><br/>
+			<div class="col-md-8 col-md-offset-5">
+				<!-- Para Imprimir -->
+				<div id="retorno"></div>
+				<button id="btn">Clique para imprimir</button>
+			</div>
+			
+			<script>
+			document.getElementById('btn').onclick = function() {
+				var conteudo = document.getElementById('retorno').innerHTML,tela_impressao = window.open('about:blank');
+
+				tela_impressao.document.write(conteudo);
+				tela_impressao.window.print();
+				tela_impressao.window.close();
+			};
+        </script>
+			
+  		</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
