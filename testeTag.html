@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Teste Validação</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Tema opcional -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- Necessária importação dos arquivos abaixo -->
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="jquery.mask.min.js"/></script>
+	<script type="text/javascript" src="recebidados.js"/></script>
+	
+    <style type="text/css">
+    	.container{
+    		margin: 2% 40%;
+    	}
+    </style>
+
+    <!--[if lt IE 9]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <label for="nome">Nome:</label> <br>
+                <input type="text" name="nome" id="nome" placeholder="Informe seu Nome" />
+            </div>
+            <br/><br/><br/>
+        </div>
+        <div class="col-md-2 col-md-offset-5">
+            <button onclick="rec()"> Enviar </button>
+        </div>
+        <br><br><br>
+        <div class="col-md-2 col-md-offset-5" id="return"></div>
+    </div>
+  </body>
+</html>

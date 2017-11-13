@@ -3,6 +3,12 @@ function soNumero(str) { //Função que devolve apenas os números de uma string
     return str.replace(/\D/g, "");
 }
 
+function rec(){
+    var nomeTag = document.getElementById ('nome');
+
+    document.getElementById('return').innerText = 'Tag: ' + nomeTag;
+}
+
 function valida(){ // Função que recebi o retorno da função testaCpf 
     var local = document.getElementById ('local').value;
     var nome = document.getElementById ('nome').value;
@@ -17,6 +23,7 @@ function valida(){ // Função que recebi o retorno da função testaCpf
     var foneNum = soNumero(fone);
     var cpfNum = soNumero(cpf);
 
+    console.log(nomeTag);
     //console.log('Variavel cpf' + cpf + '\n' + 'Variavel fone' + fone + '\n');
     //console.log('Variavel cpfNum' + cpfNum + '\n' + 'Variavel foneNum' + foneNum + '\n');
 
